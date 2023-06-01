@@ -1,0 +1,83 @@
+﻿@using (Html.BeginForm()){
+    <h5>Total de Equipas:
+        <b>[@ViewBag.TOTAL]</b>
+    </h5>
+
+    <br />
+    <h5>Equipas Ordenadas: </h5>
+    foreach (var item in ViewBag.ORDASC)
+    {
+        @item.NomeEquipa
+        <br />
+    }
+
+    <br />
+    <h5>Equipas Ordenadas Desc: </h5>
+    foreach (var item in ViewBag.ORDDESC)
+    {
+        @item.NomeEquipa
+        <br />
+    }
+
+    <br />
+    @Html.TextBox("num")
+    <h5>Equipa nº X:
+        <b>@ViewBag.NUM</b>
+    </h5>
+
+
+    <br />
+    <h5>
+        Primeira Equipa:
+        <b>@ViewBag.UM</b>
+    </h5>
+
+    <br />
+    @Html.TextBox("nomeequipa")
+    <h5>
+        Existe Equipa:
+        <b>@ViewBag.EXISTE</b>
+    </h5>
+    <br />
+    <br />
+
+    <input type="submit" asp-controller="Linq" asp-action="Teste" value="Abrir metodo View 'Teste''" />
+
+    <br />
+    <br />
+    <h5>Contabilizar membros pelo nº equipa:</h5>
+    <u>Indique o nº da equipa na 1º TextBox</u>
+    <br />
+    @:Essa equipa tem @ViewBag.NMEMBROS membros
+
+    <br />
+    <br />
+    <h5>Contabilizar membros pelo nome da equipa:</h5>
+    <u>Indique o nome da equipa na 2º TextBox</u>
+    <br />
+    @:Essa equipa tem @ViewBag.NMEMBROS2 membros
+
+    <br />
+    <br />
+    <h5>A1 - ID mais alto dos membros: @ViewBag.MAIOR</h5>
+    <h5>A2 - ID mais baixo das equipas: @ViewBag.EQUIMENOR</h5>
+    <h5>A3 - Soma ID das equipas: @ViewBag.SOMAIDEQUIP</h5>
+    <h5>A4 - Soma ID das equipas com nome da 2º TextBox: @ViewBag.SOMAIDEQUIPNOME</h5>
+    <h5>A5 - Soma ID dos membros da equipa da 2º TextBox: @ViewBag.SOMAIDMEMBROS</h5>
+    <h5>B - Quantas equipas tem o membro chamado Abel?: @ViewBag.ABELCOUNT</h5>
+    <h5>C - Nº membros das equipas Maximiniense e Falcões do Picoto: @ViewBag.NMMAXFALC</h5>
+    <h5>D - Lista Ordenada dos nomes dos membros das equipas Maximinense e Falcões do Picoto:</h5>
+    foreach (var item in ViewBag.LISTORDNMAXFALC)
+    {
+        @item <br />
+    }
+}
+
+@section Scripts
+    {
+    <script>
+        $('form input').change(function () {
+            $(this).closest('form').submit();
+        });
+    </script>
+}

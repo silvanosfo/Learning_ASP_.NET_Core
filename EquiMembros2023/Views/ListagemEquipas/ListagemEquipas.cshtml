@@ -1,0 +1,57 @@
+﻿@using EquiMembros2022.Models
+@using EquiMembros2023.Models
+
+@using (Html.BeginForm())
+{
+    <h4>Listagem de Equipas</h4>
+    @foreach (var item in (List<Equipa>)ViewBag.EQUIPAS)
+    {
+        @item.NomeEquipa
+        <br />
+    }
+
+    <br />
+    @Html.DropDownList("equipas", (SelectList)ViewBag.LISTEQUIP, new {@onchange="submit();"})
+    <br />
+
+    <br />
+    <h4>Listagem dos Membros</h4>
+    @foreach (var item in (List<Membro>)ViewBag.MEMBROS)
+    {
+        @item.NomeMembro
+        <br />
+    }
+
+    <br />
+    @Html.DropDownList("membros", (SelectList)ViewBag.LISTMEMB)
+    <br />
+
+    <br />
+    <h4>Listagem de Equipas e respetivos Membros</h4>
+    @foreach (var equipa in (List<Equipa>)ViewBag.EQUIPAS)
+    {
+        <br />
+        <b>@equipa.NomeEquipa: </b>
+        foreach (var membro in (List<Membro>)ViewBag.MEMBROS)
+        {
+            if (equipa.Id == membro.EquipaId)
+            {
+                <u>@membro.NomeMembro</u>
+                @:|
+            }
+        }
+    }
+
+    <br />
+    <br />
+    <h4>Listagem Membros da Equipa consoante DropDownBox</h4>
+    <b>@ViewBag.EQUIPAID.NomeEquipa: </b>
+    foreach (var membro in (List<Membro>)ViewBag.MEMBROS)
+    {
+        if (ViewBag.EQUIPAID.Id == membro.EquipaId)
+        {
+            <u>@membro.NomeMembro</u>
+            @:|
+        }
+    }
+}

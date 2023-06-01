@@ -1,0 +1,15 @@
+﻿@model EquiMembros2023.Models.EquipasMembros
+@{
+    foreach (var equip in Model.Equipas)
+    {
+        <b>@equip.NomeEquipa: </b>
+        foreach (var memb in Model.Membros)
+        {
+            if (equip.Id == memb.EquipaId)
+            {
+                @memb.NomeMembro @:&nbsp;
+            }
+        }
+        <br />
+    }
+}
