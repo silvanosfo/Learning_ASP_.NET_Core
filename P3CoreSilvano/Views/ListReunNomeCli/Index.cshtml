@@ -1,0 +1,43 @@
+﻿@model List<P3CoreSilvano.Models.Reuniao>
+
+<h1>Lista de Reunioes</h1>
+
+@using (Html.BeginForm())
+{
+    <div>
+        <div>
+            Cliente:
+        </div>
+        <div>
+            @Html.TextBox("nomeCli")
+            <input type="submit" value="Procurar" />
+        </div>
+    </div>
+
+
+    <br />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Data</th>
+                <th>Duração</th>
+                <th>Resumo</th>
+                <th>Cliente</th>
+                <th>Funcionário</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Data</td>
+                    <td>@item.Duracao</td>
+                    <td>@item.Resumo</td>
+                    <td>@item.Cliente.NomeCliente</td>
+                    <td>@item.Funcionario.NomeFunc</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
